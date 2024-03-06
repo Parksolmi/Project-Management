@@ -1,12 +1,13 @@
-import Section from "./components/Section";
+import NewProject from "./components/NewProject";
+import NoProjectSelected from "./components/NoProjectSelected";
 import SideBar from "./components/SideBar";
 
 
 function App() {
   return (
-    <main className="flex flex-row h-screen">
-      <SideBar/>
-      <Section/>
+    <main className="flex gap-8 h-screen my-8">
+      <SideBar />
+      <NoProjectSelected />
     </main>
   );
 }
