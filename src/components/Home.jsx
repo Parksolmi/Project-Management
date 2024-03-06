@@ -14,7 +14,10 @@ export default function Home() {
         />
         <h1 className="my-5 text-center text-2xl font-bold text-zinc-600">No project selected</h1>
         <p className="text-zinc-400">Select a project or get started with a new one</p>
-        <Button text={"Create New project"}/>
+        <Button 
+          bgColor={"bg-zinc-700"} 
+          txColor={"text-zinc-300"}
+          text={"Create New project"}/>
       </section>
     </>
   )

@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Button({text}) {
+export default function Button({bgColor, txColor, text}) {
   return (
-    <button className="px-4 py-2 bg-zinc-700 text-zinc-300 rounded-md mt-10">
+    <button className={`px-5 py-2 ${bgColor} ${txColor} rounded-md mt-10`}>
       {text}
     </button>
   )

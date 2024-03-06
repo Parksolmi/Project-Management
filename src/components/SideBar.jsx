@@ -9,7 +9,9 @@ export default function SideBar() {
       <div className="basis-auto h-screen bg-zinc-900 rounded-se-xl pt-16 pl-8 ">
         <h3 className="text-white text-lg font-bold uppercase">Your projects</h3>
         <Button
-         text={"+ Add Project"}
+          bgColor={"bg-zinc-700"}
+          txColor={"text-zinc-300"}
+          text={"+ Add Project"}
         />
       </div>
     </aside>
