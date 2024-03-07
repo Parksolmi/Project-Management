@@ -1,41 +1,27 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import InputForm from "./InputForm";
 
 export default function NewProject({onAdd}) {
 
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredDescription, setEnteredDescription] = useState("");
-  const [enteredDueDate, setEnteredDueDate] = useState("");
-
-
-  function handleSetTitle (event) {
-    setEnteredTitle(event.target.value);
-  }
-  function handleSetDescription (event) {
-    setEnteredDescription(event.target.value);
-  }
-  function handleSetDueDate (event) {
-    setEnteredDueDate(event.target.value);
-  }
-
+  const enteredTitle = useRef();
+  const enteredDescription = useRef();
+  const enteredDueDate = useRef();
 
   function handleCancel () {
     
   }
   function handleSave () {
-    if(enteredTitle && enteredDescription && enteredDueDate) {
+    if(enteredTitle.current.value && enteredDescription.current.value && enteredDueDate.current.value) {
       onAdd({
-        title: enteredTitle,
-        description: enteredDescription,
-        dueDate: enteredDueDate,
+        title: enteredTitle.current.value,
+        description: enteredDescription.current.value,
+        dueDate: enteredDueDate.current.value,
       })
     } else {
       console.log("NOT VALID");
     }
-
-    
   }
 
   return (
@@ -55,16 +41,16 @@ export default function NewProject({onAdd}) {
       <InputForm 
         label={"title"} 
         type="text"
-        onChange={handleSetTitle}/>
+        ref={enteredTitle}/>
       <InputForm 
         label={"description"} 
         type="text"
-        onChange={handleSetDescription} 
-        isTextarea />
+        isTextarea 
+        ref={enteredDescription}/>
       <InputForm 
         label={"due date"} 
         type="date"
-        onChange={handleSetDueDate} />
+        ref={enteredDueDate}/>
     </section>
   )
 }
