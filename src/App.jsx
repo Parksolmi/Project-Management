@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import NewProject from "./components/NewProject";
 import NoProjectSelected from "./components/NoProjectSelected";
@@ -12,7 +12,7 @@ function App() {
     projects: [],
   });
 
-  function handleStartAddProject() {
+  function handleStartAddProject () {
     setProjectsState(prevState => {
       return {
         ...prevState,
@@ -21,13 +21,30 @@ function App() {
     });
   }
 
+  function handleAddProject (projectData) {
+    setProjectsState(prevState => {
+      const newProject = {
+        ...projectData,
+        id: Math.random(),
+      };
+
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject],
+      }
+    })
+  }
+
   let content;
   if(projectsState.selectedProjectId === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>
   } else if(projectsState.selectedProjectId === null) {
-    content = <NewProject/>
+    content = <NewProject onAdd={handleAddProject}/>
   }
 
+  // useEffect(() => {
+  //   console.log(projectsState.projects);
+  // }, [projectsState])
 
   return (
     <main className="flex gap-8 h-screen my-8">
