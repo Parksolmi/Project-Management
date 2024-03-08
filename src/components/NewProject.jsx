@@ -19,6 +19,7 @@ export default function NewProject({onAdd}) {
         description: enteredDescription.current.value,
         dueDate: enteredDueDate.current.value,
       })
+
     } else {
       console.log("NOT VALID");
     }
