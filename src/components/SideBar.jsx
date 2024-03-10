@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import Button from "./Button";
 
-export default function SideBar({ onStartAddProject, onSelectProject, projects }) {
+export default function SideBar({ 
+  onStartAddProject, 
+  onSelectProject, 
+  projects,
+  selectedId }) {
 
 
   return (
@@ -13,13 +17,18 @@ export default function SideBar({ onStartAddProject, onSelectProject, projects }
         </Button>
       </p>
       <ul className="mt-8">
-        {projects.map((project) => (
-          <li key={project.id} onClick={() => onSelectProject(project)}>
-            <button className="w-full text-left px-2 py-1 rounded-sm my-1 text-stone-400 hover:text-tone-200 hover:bg-stone-800">
-              {project.title}
-            </button>
-          </li>
-        ))}
+        {projects.map((project) => {
+
+          return (
+            <li key={project.id}>
+              <button 
+              className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-tone-200 hover:bg-stone-800"
+              onClick={() => onSelectProject(project.id)}>
+                {project.title}
+              </button>
+            </li>
+          )
+        })}
       </ul>
     </aside>
   )
