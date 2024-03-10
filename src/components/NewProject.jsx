@@ -3,26 +3,26 @@ import { useState, useRef } from "react";
 
 import InputForm from "./InputForm";
 
-export default function NewProject({onAdd}) {
+export default function NewProject({ onAdd }) {
 
-  const enteredTitle = useRef();
-  const enteredDescription = useRef();
-  const enteredDueDate = useRef();
+  const title = useRef();
+  const description = useRef();
+  const dueDate = useRef();
 
-  function handleCancel () {
-    
+  function handleCancel() {
+
   }
-  function handleSave () {
-    if(enteredTitle.current.value && enteredDescription.current.value && enteredDueDate.current.value) {
-      onAdd({
-        title: enteredTitle.current.value,
-        description: enteredDescription.current.value,
-        dueDate: enteredDueDate.current.value,
-      })
+  function handleSave() {
 
-    } else {
-      console.log("NOT VALID");
-    }
+    const enteredTitle = title.current.value;
+    const enteredDescription = description.current.value;
+    const enteredDueDate = dueDate.current.value;
+
+    onAdd({
+      title: enteredTitle,
+      description: enteredDescription,
+      dueDate: enteredDueDate,
+    })
   }
 
   return (
@@ -39,19 +39,19 @@ export default function NewProject({onAdd}) {
           Save
         </button>
       </menu>
-      <InputForm 
-        label={"title"} 
+      <InputForm
+        label={"title"}
         type="text"
-        ref={enteredTitle}/>
-      <InputForm 
-        label={"description"} 
+        ref={title} />
+      <InputForm
+        label={"description"}
         type="text"
-        isTextarea 
-        ref={enteredDescription}/>
-      <InputForm 
-        label={"due date"} 
+        isTextarea
+        ref={description} />
+      <InputForm
+        label={"due date"}
         type="date"
-        ref={enteredDueDate}/>
+        ref={dueDate} />
     </section>
   )
 }
