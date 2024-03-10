@@ -3,15 +3,12 @@ import { useState, useRef } from "react";
 
 import InputForm from "./InputForm";
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
 
   const title = useRef();
   const description = useRef();
   const dueDate = useRef();
 
-  function handleCancel() {
-
-  }
   function handleSave() {
 
     const enteredTitle = title.current.value;
@@ -29,7 +26,7 @@ export default function NewProject({ onAdd }) {
     <section className=" w-[35rem] items-start mt-16">
       <menu className="flex justify-end gap-4 my-4">
         <button
-          onClick={handleCancel}
+          onClick={onCancel}
           className={`px-5 py-2 text-stone-800 hover:text-stone-950 rounded-md`}>
           Cancel
         </button>
